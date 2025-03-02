@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+long faktoriyel(int n) {
+    long f = 1;
+    for (int i = 2; i <= n; i++) f *= i;
+    return f;
+}
+
+long binom(int n, int k) {
+    return faktoriyel(n) / (faktoriyel(k) * faktoriyel(n - k));
+}
+
+int main() {
+    int a, b, n;
+    printf("a, b ve n değerlerini girin: ");
+    scanf("%d %d %d", &a, &b, &n);
+    
+    for (int k = 0; k <= n; k++) {
+        printf("%ld*%d^%d*%d^%d%s", binom(n, k), a, n - k, b, k, k == n ? "\n" : " + ");
+    }
+    return 0;
+}
